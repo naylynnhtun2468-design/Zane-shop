@@ -140,6 +140,8 @@
         padding: 10px;
         width: 200px;
     }
+    <!-- Lightbox CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
         
 </style>
     <header>
@@ -161,19 +163,28 @@
 <h2 class="section-title">👕 Clothing (အဝတ်အစား)</h2>
 <div class="product-grid">
     <div class="product-card" data-category="clothing">
-        <img src="shirt.png" class="product-img" alt="Standard T-Shirt">
+        <a href="shirt.png" data-lightbox="products" data-title="Standard T-Shirt">
+    <img src="shirt.png" class="product-img" alt="Standard T-Shirt">
+        </a>
+        
         <div class="product-name">Standard T-Shirt</div>
         <div class="product-price">900,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Standard T-Shirt', '900,000 MMK')">ဝယ်ယူရန်</button>
     </div>
     <div class="product-card" data-category="clothing">
-        <img src="cigarette.png" class="product-img" alt="Premium Cigarette">
+        <a href="cigarette.png" data-lightbox="products" data-title="Premium Cigarette">
+    <img src="cigarette.png" class="product-img" alt="Premium Cigarette">
+</a>
+
         <div class="product-name">Premium T-shirt</div>
         <div class="product-price">30,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Premium T-shirt', '30,000 MMK')">ဝယ်ယူရန်</button>
     </div>
     <div class="product-card" data-category="clothing">
-        <img src="streetwearjacket.jpg" class="product-img" alt="Streetwear Jacket">
+        <a href="streetwearjacket.png" data-lightbox="products" data-title="Streetwear Jacket">
+    <img src="streetwearjacket.png" class="product-img" alt="Streetwear Jacket">
+</a>
+
         <div class="product-name">Streetwear Jacket</div>
         <div class="product-price">35,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Streetwear Jacket', '35,000 MMK')">ဝယ်ယူရန်</button>
@@ -250,5 +261,9 @@
     <button onclick="sendOrder()" style="padding:10px; background:blue; color:white; border:none;">Confirm မှာယူမည်</button>
     <button onclick="document.getElementById('order-modal').style.display='none'" style="padding:10px;">ပိတ်မည်</button>
 </div>
+    <!-- jQuery & Lightbox JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
 </body>
 </html>
