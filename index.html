@@ -142,6 +142,21 @@
     }
     <!-- Lightbox CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    :root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
         
 </style>
     <header>
@@ -153,6 +168,8 @@
     <div class="search-container">
         <input type="text" id="search-input" placeholder="🔍 ပစ္စည်းရှာဖွေရန်...">
     </div>
+        <button onclick="toggleTheme()">Mode ပြောင်းရန်</button>
+        
         <div class="filter-buttons" style="margin-bottom: 20px; text-align: center;">
     <button onclick="filterProduct('all')">အားလုံး</button>
     <button onclick="filterProduct('clothing')">Clothing</button>
@@ -264,6 +281,14 @@
     <!-- jQuery & Lightbox JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    if (currentTheme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+}
     
 </body>
 </html>
