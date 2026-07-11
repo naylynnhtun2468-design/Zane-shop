@@ -109,6 +109,27 @@
         background: linear-gradient(135deg, #1d4ed8, #1e40af);
         box-shadow: 0 6px 15px rgba(59, 130, 246, 0.35);
     }
+            .search-container {
+        margin: 1.5rem 0;
+        display: flex;
+        justify-content: center;
+    }
+    #search-input {
+        width: 100%;
+        max-width: 500px;
+        padding: 0.8rem 1.2rem;
+        font-size: 1rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        outline: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    #search-input:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    }
+
 </style>
     <header>
         <h1>ZANE SHOP</h1>
@@ -116,7 +137,10 @@
     </header>
 
     <div class="container">
-
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="🔍 ပစ္စည်းရှာဖွေရန်...">
+    </div>
+        
         <!-- Clothing Section -->
         <h2 class="section-title">👕 Clothing (အဝတ်အစား)</h2>
         <div class="product-grid">
@@ -160,4 +184,20 @@
     </div>
 
 </body>
+    <script>
+    document.getElementById('search-input').addEventListener('input', function(e) {
+        const searchText = e.target.value.toLowerCase();
+        const products = document.querySelectorAll('.product-card');
+        
+        products.forEach(product => {
+            const name = product.querySelector('.product-name').textContent.toLowerCase();
+            if(name.includes(searchText)) {
+                product.style.display = 'flex';
+            } else {
+                product.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 </html>
