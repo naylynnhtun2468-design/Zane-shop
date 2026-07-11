@@ -166,15 +166,20 @@ body {
 
     <div class="container">
     <div class="search-container">
-        <input type="text" id="search-input" placeholder="🔍 ပစ္စည်းရှာဖွေရန်...">
+    <input type="text" id="search-input" placeholder="🔍 ပစ္စည်းရှာဖွေရန်...">
+    
+    <!-- Dark Mode ခလုတ် -->
+    <div style="text-align: center; margin: 15px;">
+        <button onclick="toggleTheme()" style="padding: 8px 15px; cursor: pointer; border-radius: 5px;">Dark/Light Mode</button>
     </div>
-        <button onclick="toggleTheme()">Mode ပြောင်းရန်</button>
-        
-        <div class="filter-buttons" style="margin-bottom: 20px; text-align: center;">
+</div> <!-- Search Container အပိတ် -->
+
+<div class="filter-buttons" style="margin-bottom: 20px; text-align: center;">
     <button onclick="filterProduct('all')">အားလုံး</button>
     <button onclick="filterProduct('clothing')">Clothing</button>
     <button onclick="filterProduct('phone')">Phone Accessories</button>
-        </div>
+</div>
+
         
         <!-- Clothing Section -->
 <h2 class="section-title">👕 Clothing (အဝတ်အစား)</h2>
