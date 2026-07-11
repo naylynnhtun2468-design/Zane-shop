@@ -201,10 +201,11 @@
         document.getElementById('order-modal').style.display = 'block';
     }
 
-        function sendOrder() {
+            function sendOrder() {
         const name = document.getElementById('cust-name').value;
         const address = document.getElementById('cust-address').value;
-        const msg = `Hi Zane Shop, ${currentProduct} (${currentPrice}) မှာယူချင်ပါတယ်။\nနာမည်: ${name}\nလိပ်စာ: ${address}`;
+        const qty = document.getElementById('cust-qty').value;
+        const msg = `Hi Zane Shop, ${currentProduct} (${currentPrice}) ကို ${qty} ခု မှာယူချင်ပါတယ်။\nနာမည်: ${name}\nလိပ်စာ: ${address}`;
         window.open(`https://t.me/loki6383?text=${encodeURIComponent(msg)}`);
         document.getElementById('order-modal').style.display = 'none';
     }
@@ -214,6 +215,7 @@
 <div id="order-modal" style="display:none; position:fixed; top:20%; left:10%; width:80%; background:#fff; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.5); z-index:999;">
     <h3>မှာယူမည်</h3>
     <input type="text" id="cust-name" placeholder="နာမည်" style="width:100%; margin-bottom:10px; padding:8px;">
+    <input type="number" id="cust-qty" value="1" min="1" style="width:100%; margin-bottom:10px;">
     <input type="text" id="cust-address" placeholder="လိပ်စာ" style="width:100%; margin-bottom:10px; padding:8px;">
     <button onclick="sendOrder()" style="padding:10px; background:blue; color:white; border:none;">Confirm မှာယူမည်</button>
     <button onclick="document.getElementById('order-modal').style.display='none'" style="padding:10px;">ပိတ်မည်</button>
