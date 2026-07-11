@@ -140,23 +140,28 @@
     <div class="search-container">
         <input type="text" id="search-input" placeholder="🔍 ပစ္စည်းရှာဖွေရန်...">
     </div>
+        <div class="filter-buttons" style="margin-bottom: 20px; text-align: center;">
+    <button onclick="filterProduct('all')">အားလုံး</button>
+    <button onclick="filterProduct('clothing')">Clothing</button>
+    <button onclick="filterProduct('phone')">Phone Accessories</button>
+        </div>
         
         <!-- Clothing Section -->
 <h2 class="section-title">👕 Clothing (အဝတ်အစား)</h2>
 <div class="product-grid">
-    <div class="product-card">
+    <div class="product-card" data-category="clothing">
         <img src="shirt.png" class="product-img" alt="Standard T-Shirt">
         <div class="product-name">Standard T-Shirt</div>
         <div class="product-price">900,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Standard T-Shirt', '900,000 MMK')">ဝယ်ယူရန်</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="clothing">
         <img src="cigarette.png" class="product-img" alt="Premium Cigarette">
         <div class="product-name">Premium T-shirt</div>
         <div class="product-price">30,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Premium T-shirt', '30,000 MMK')">ဝယ်ယူရန်</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category="clothing">
         <img src="streetwearjacket.jpg" class="product-img" alt="Streetwear Jacket">
         <div class="product-name">Streetwear Jacket</div>
         <div class="product-price">35,000 MMK</div>
@@ -167,13 +172,13 @@
 <!-- Phone Accessories Section -->
 <h2 class="section-title">📱 Phone Accessories (ဖုန်းပစ္စည်း)</h2>
 <div class="product-grid">
-    <div class="product-card">
+    <div class="product-card" data-category="phone">
         <div class="product-icon">🔌</div>
         <div class="product-name">Fast Charger 20W</div>
         <div class="product-price">18,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Fast Charger 20W', '18,000 MMK')">ဝယ်ယူရန်</button>
     </div>
-    <div class="product-card">
+    <div class="product-card" data-category=phone">
         <div class="product-icon">🎧</div>
         <div class="product-name">Wireless Earbuds</div>
         <div class="product-price">28,000 MMK</div>
@@ -192,6 +197,16 @@
             product.style.display = name.includes(searchText) ? '' : 'none';
         });
     });
+    function filterProduct(category) {
+    const products = document.querySelectorAll('.product-card');
+    products.forEach(product => {
+        if (category === 'all' || product.getAttribute('data-category') === category) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+}
 
     // ၂။ Pop-up စနစ်
     let currentProduct = "", currentPrice = "";
