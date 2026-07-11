@@ -201,9 +201,9 @@
     const products = document.querySelectorAll('.product-card');
     products.forEach(product => {
         if (category === 'all' || product.getAttribute('data-category') === category) {
-            product.style.display = '';
+            product.style.display = 'block';
         } else {
-            product.style.display = '';
+            product.style.display = 'none';
         }
     });
 }
