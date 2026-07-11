@@ -201,7 +201,7 @@
     const products = document.querySelectorAll('.product-card');
     products.forEach(product => {
         if (category === 'all' || product.getAttribute('data-category') === category) {
-            product.style.display = 'block';
+            product.style.display = '';
         } else {
             product.style.display = 'none';
         }
