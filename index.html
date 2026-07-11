@@ -142,42 +142,42 @@
     </div>
         
         <!-- Clothing Section -->
-        <h2 class="section-title">👕 Clothing (အဝတ်အစား)</h2>
-        <div class="product-grid">
-            <div class="product-card">
-    <img src="shirt.png" class="product-img" alt="Standard T-Shirt">
-    <div class="product-name">Standard T-Shirt</div>
-    <div class="product-price">900,000 MMK</div>
-    <a href="https://t.me/loki6383" class="buy-btn">ဝယ်ယူရန်</a>
-</div>
-            <div class="product-card">
-    <img src="cigarette.png" class="product-img" alt="Premium Cigarette">
-    <div class="product-name">Premium T-shirt</div>
-    <div class="product-price">30,000 MMK</div>
-    <a href="https://t.me/loki6383" class="buy-btn">ဝယ်ယူရန်</a>
+<h2 class="section-title">👕 Clothing (အဝတ်အစား)</h2>
+<div class="product-grid">
+    <div class="product-card">
+        <img src="shirt.png" class="product-img" alt="Standard T-Shirt">
+        <div class="product-name">Standard T-Shirt</div>
+        <div class="product-price">900,000 MMK</div>
+        <button class="buy-btn" onclick="openModal('Standard T-Shirt', '900,000 MMK')">ဝယ်ယူရန်</button>
+    </div>
+    <div class="product-card">
+        <img src="cigarette.png" class="product-img" alt="Premium Cigarette">
+        <div class="product-name">Premium T-shirt</div>
+        <div class="product-price">30,000 MMK</div>
+        <button class="buy-btn" onclick="openModal('Premium T-shirt', '30,000 MMK')">ဝယ်ယူရန်</button>
+    </div>
+    <div class="product-card">
+        <img src="streetwearjacket.jpg" class="product-img" alt="Streetwear Jacket">
+        <div class="product-name">Streetwear Jacket</div>
+        <div class="product-price">35,000 MMK</div>
+        <button class="buy-btn" onclick="openModal('Streetwear Jacket', '35,000 MMK')">ဝယ်ယူရန်</button>
+    </div>
 </div>
 
-            <div class="product-card">
-                <img src="streetwearjacket.jpg" class="product-img" alt="Streetwear Jacket">
-                <div class="product-name">Streetwear Jacket</div>
-                <div class="product-price">35,000 MMK</div>
-                <a href="https://t.me/loki6383" class="buy-btn">ဝယ်ယူရန်</a>
-            </div>
-        </div>
-        <!-- Phone Accessories Section -->
+<!-- Phone Accessories Section -->
 <h2 class="section-title">📱 Phone Accessories (ဖုန်းပစ္စည်း)</h2>
 <div class="product-grid">
     <div class="product-card">
         <div class="product-icon">🔌</div>
         <div class="product-name">Fast Charger 20W</div>
         <div class="product-price">18,000 MMK</div>
-        <a href="https://t.me/loki6383" class="buy-btn">ဝယ်ယူရန်</a>
+        <button class="buy-btn" onclick="openModal('Fast Charger 20W', '18,000 MMK')">ဝယ်ယူရန်</button>
     </div>
     <div class="product-card">
         <div class="product-icon">🎧</div>
         <div class="product-name">Wireless Earbuds</div>
         <div class="product-price">28,000 MMK</div>
-        <a href="https://t.me/loki6383" class="buy-btn">ဝယ်ယူရန်</a>
+        <button class="buy-btn" onclick="openModal('Wireless Earbuds', '28,000 MMK')">ဝယ်ယူရန်</button>
     </div>
 </div>
 </div>
@@ -187,35 +187,36 @@
     document.getElementById('search-input').addEventListener('input', function(e) {
         const searchText = e.target.value.toLowerCase();
         const products = document.querySelectorAll('.product-card');
-        
         products.forEach(product => {
             const name = product.querySelector('.product-name').textContent.toLowerCase();
-            if(name.includes(searchText)) {
-                product.style.display = 'flex';
-            } else {
-                product.style.display = 'none';
-            }
+            product.style.display = name.includes(searchText) ? '' : 'none';
         });
     });
 
-    // ၂။ မှာယူမှုစာသား အလိုအလျောက် Copy ကူးပေးသည့်စနစ်
-    const buyButtons = document.querySelectorAll('.buy-btn');
-    buyButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const card = this.closest('.product-card');
-            if (!card) return;
-            
-            const name = card.querySelector('.product-name').textContent.trim();
-            const price = card.querySelector('.product-price').textContent.trim();
-            
-            const orderMessage = `Hi Zane Shop၊ ကျွန်တော်/ကျွန်မ "${name}" (${price}) လေး မှာယူချင်လို့ပါဗျာ။`;
-            
-            navigator.clipboard.writeText(orderMessage);
-            
-            alert(`🛒 "${name}" အတွက် မှာယူမည့်စာသားကို Copy ကူးလိုက်ပါပြီ။\n\nTelegram ရောက်လျှင် စာရိုက်သည့်နေရာတွင် ဖိပြီး "Paste" (ချ) ပေးရုံပါပဲဗျာ။`);
-        });
-    });
+    // ၂။ Pop-up စနစ်
+    let currentProduct = "", currentPrice = "";
+    function openModal(name, price) {
+        currentProduct = name;
+        currentPrice = price;
+        document.getElementById('order-modal').style.display = 'block';
+    }
+
+    function sendOrder() {
+        const name = document.getElementById('cust-name').value;
+        const address = document.getElementById('cust-address').value;
+        const msg = `Hi Zane Shop, ${currentProduct} (${currentPrice}) မှာယူချင်ပါတယ်။\nနာမည်: ${name}\nလိပ်စာ: ${address}`;
+        window.open(`https://t.me/loki16383?text=${encodeURIComponent(msg)}`);
+        document.getElementById('order-modal').style.display = 'none';
+    }
 </script>
 
+<!-- Pop-up ဖောင် -->
+<div id="order-modal" style="display:none; position:fixed; top:20%; left:10%; width:80%; background:#fff; padding:20px; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.5); z-index:999;">
+    <h3>မှာယူမည်</h3>
+    <input type="text" id="cust-name" placeholder="နာမည်" style="width:100%; margin-bottom:10px; padding:8px;">
+    <input type="text" id="cust-address" placeholder="လိပ်စာ" style="width:100%; margin-bottom:10px; padding:8px;">
+    <button onclick="sendOrder()" style="padding:10px; background:blue; color:white; border:none;">Confirm မှာယူမည်</button>
+    <button onclick="document.getElementById('order-modal').style.display='none'" style="padding:10px;">ပိတ်မည်</button>
+</div>
 </body>
 </html>
