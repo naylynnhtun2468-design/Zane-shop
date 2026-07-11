@@ -157,6 +157,14 @@ body {
   color: var(--text-color);
   transition: background-color 0.3s, color 0.3s;
 }
+.show-animation {
+    animation: popIn 0.4s ease-out forwards;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}    
         
 </style>
     <header>
@@ -243,15 +251,20 @@ body {
     products.forEach(product => {
         const cat = product.getAttribute('data-category');
         
-        if (category === 'all') {
+        product.classList.remove('show-animation');
+        
+        if (category === 'all' || category === cat) {
             product.style.display = 'block';
-        } else if (cat === category) {
-            product.style.display = 'block';
+            
+            setTimeout(() => {
+                product.classList.add('show-animation');
+            }, 10);
         } else {
             product.style.display = 'none';
         }
     });
-}
+    }
+    
 
     // ၂။ Pop-up စနစ်
     let currentProduct = "", currentPrice = "";
