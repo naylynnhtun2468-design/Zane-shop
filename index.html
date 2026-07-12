@@ -7,13 +7,24 @@
   i18next.init({
     lng: 'my',
     resources: {
-      en: {
-        translation: { "welcome": "Welcome to ZANE SHOP" }
-      },
-      my: {
-        translation: { "welcome": "ZANE SHOP မှ ကြိုဆိုပါတယ်" }
-      }
+  en: {
+    translation: { 
+      "welcome": "Welcome to ZANE SHOP",
+      "p1": "Standard T-Shirt" 
+      "p2": "Premium T-shirt"
+      "p3": "Streetwear Jacket"
     }
+  },
+  my: {
+    translation: { 
+      "welcome": "ZANE SHOP မှ ကြိုဆိုပါတယ်",
+      "p1": "ပုံမှန် တီရှပ်" 
+      "p2": "ပရီမီယမ် တီရှပ်"
+      "p3": "လမ်းဘေး အင်္ကျီ"
+    }
+  }
+},
+
   });
 
   function changeLanguage(lang) {
@@ -296,7 +307,7 @@ body {
     <img src="shirt.png" class="product-img" alt="Standard T-Shirt">
         </a>
         
-        <div class="product-name">Standard T-Shirt</div>
+        <div class="product-name" data-i18n="p1">Standard T-Shirt</div>
         <div class="product-price">900,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Standard T-Shirt', '900,000 MMK')">ဝယ်ယူရန်</button>
     </div>
@@ -305,7 +316,7 @@ body {
     <img src="cigarette.png" class="product-img" alt="Premium Cigarette">
 </a>
 
-        <div class="product-name">Premium T-shirt</div>
+        <div class="product-name" data-i18n="p2">Premium T-shirt</div>
         <div class="product-price">30,000 MMK</div>
         <button class="buy-btn" onclick="openModal('Premium T-shirt', '30,000 MMK')">ဝယ်ယူရန်</button>
     </div>
@@ -313,7 +324,7 @@ body {
     <a href="streetwearjacket.jpg" data-lightbox="products" data-title="Streetwear Jacket">
         <img src="streetwearjacket.jpg" class="product-img" alt="Streetwear Jacket">
     </a>
-    <div class="product-name">Streetwear Jacket</div>
+    <div class="product-name" data-i18n="p3">Streetwear Jacket</div>
     <div class="product-price">35,000 MMK</div>
     <button class="buy-btn" onclick="openModal('Streetwear Jacket', '35,000 MMK')">ဝယ်ယူရန်</button>
 </div>
