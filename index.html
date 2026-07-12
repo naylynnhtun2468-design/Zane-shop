@@ -2,6 +2,29 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/23.11.5/i18next.min.js"></script>
+    <script>
+  i18next.init({
+    lng: 'my',
+    resources: {
+      en: {
+        translation: { "welcome": "Welcome to ZANE SHOP" }
+      },
+      my: {
+        translation: { "welcome": "ZANE SHOP မှ ကြိုဆိုပါတယ်" }
+      }
+    }
+  });
+
+  function changeLanguage(lang) {
+    i18next.changeLanguage(lang, () => {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        el.innerHTML = i18next.t(el.getAttribute('data-i18n'));
+      });
+    });
+  }
+    </script>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zane Shop</title>
     <style>
@@ -17,7 +40,13 @@
         background: linear-gradient(135deg, #111111, #2c3e50);
         color: #fff;
         text-align: center;
+
+        
         padding: 2.5rem 1rem;
+        <div style="margin-top: 10px;">
+  <button onclick="changeLanguage('en')" style="cursor: pointer;">English</button>
+  <button onclick="changeLanguage('my')" style="cursor: pointer;">မြန်မာ</button>
+</div>
         box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     header h1 {
@@ -239,7 +268,8 @@ body {
         
 </style>
     <header>
-        <h1>ZANE SHOP</h1>
+        <h1 data-i18n="welcome">ZANE SHOP မှ ကြိုဆိုပါတယ်</h1>
+        
         <p>အဝတ်အစားနှင့် ဖုန်းဆက်စပ်ပစ္စည်းများ အရောင်းဆိုင်</p>
     </header>
 
