@@ -220,7 +220,22 @@ body {
         font-size: 0.75rem;
         opacity: 0.6;
     }
+.theme-toggle-btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background: #3b82f6;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 5px 0 #1d4ed8;
+    transition: all 0.1s ease;
+}
 
+.theme-toggle-btn:active {
+    box-shadow: none;
+    transform: translateY(5px);
+}     
         
 </style>
     <header>
@@ -233,7 +248,10 @@ body {
     <input type="text" id="search-input" placeholder="🔍 ပစ္စည်းရှာဖွေရန်...">
     
     <div style="text-align: center; margin: 15px;">
-    <button onclick="toggleTheme()" style="padding: 8px 15px; cursor: pointer;">အလင်း/အမှောင် ပြောင်းမည်</button>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">
+    အလင်း/အမှောင် ပြောင်းမည်
+</button>
+        
 </div>
 
 </div>
